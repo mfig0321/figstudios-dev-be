@@ -45,7 +45,9 @@ class base(Configuration):
 
 
         # Third Party
+        'chatterbot.ext.django_chatterbot',
         'corsheaders',
+        'oauth2_provider',
         'rest_framework',
     ]
 
@@ -96,6 +98,8 @@ class base(Configuration):
         }
     }
 
+    DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
     # Password validation
     # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -113,6 +117,15 @@ class base(Configuration):
             'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
         },
     ]
+
+    REST_FRAMEWORK = {
+        'DEFAULT_AUTHENTICATION_CLASSES': (
+            'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+        ),
+        'DEFAULT_PERMISSION_CLASSES': (
+            'rest_framework.permissions.IsAuthenticated',
+        )
+    }
 
     # Internationalization
     # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -138,6 +151,17 @@ class base(Configuration):
         'http://localhost:3000',
         'http://localhost:8081'
     )
+
+    # ChatterBot https://chatterbot.readthedocs.io/en/stable/django/settings.html
+
+    CHATTERBOT = {
+        'name': 'Tech Support Bot',
+        'logic_adapters': [
+            'chatterbot.logic.MathematicalEvaluation',
+            'chatterbot.logic.TimeLogicAdapter',
+            'chatterbot.logic.BestMatch'
+        ]
+    }
 
 
 class dev(base):

@@ -50,7 +50,7 @@
             "name": "Python: Django",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}\\application\\manage.py",
+            "program": "${workspaceFolder}/application/manage.py",
             "args": [
                 "runserver",
                 "8000"

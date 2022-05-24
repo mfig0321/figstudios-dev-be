@@ -16,4 +16,3 @@ class HealthCheckEndpoint(APIView):
             'test': 'Test repo path changes'
         }
         return Response(msg, status=HTTP_200_OK)
-

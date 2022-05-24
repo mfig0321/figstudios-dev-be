@@ -15,17 +15,20 @@ ipython = "*"
 
 [packages]
 atomicwrites = "*"
+chatterbot = "*"
 coverage = "*"
 django = "*"
 djangorestframework = "*"
 django-configurations = "*"
 django-cors-headers = "*"
 djangorestframework-gis = "*"
+django-oauth-toolkit = "*"
 gunicorn = "*"
 importlib_metadata = "*"
 psycopg2-binary = "*"
 python-dotenv = "*"
 pylint = "*"
+PyYAML = "*"
 requests  = "*"
 
 [requires]

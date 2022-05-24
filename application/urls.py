@@ -19,7 +19,9 @@ from django.conf.urls import include
 from django.contrib import admin
 from django.urls import path
 
+from chatbot import views as chatbot_views
 from health import views as health_views
+from user import views as user_views
 
 
 # Setup the URLs and include login URLs for the browsable API.
@@ -28,5 +30,11 @@ urlpatterns = [
 
     # Applications Urls
     path('', health_views.HealthCheckEndpoint.as_view(), name='health'),
+    path('chatbot/', chatbot_views.ChatterBotApiView.as_view()),
     path('health/', health_views.HealthCheckEndpoint.as_view(), name='health'),
+    path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    path('users/', user_views.UserList.as_view()),
+    path('users/<pk>/', user_views.UserDetails.as_view()),
+    path('groups/', user_views.GroupList.as_view()),
+    path('train/', chatbot_views.ChatterBotTrain.as_view()),
 ]
